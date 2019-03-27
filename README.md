@@ -1,2 +1,2 @@
-# JTrafic
+# JTraffic
 Projet Java - CIR3
