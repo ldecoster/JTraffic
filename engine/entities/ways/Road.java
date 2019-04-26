@@ -1,4 +1,5 @@
 package engine.entities.ways;
+import engine.entities.city.*;
 
 public class Road {
     private EnumRoad type;
