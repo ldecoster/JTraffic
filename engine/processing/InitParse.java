@@ -74,12 +74,14 @@ public class InitParse {
                    for (int j = 0; j < cityInfo.getLength(); j++) {
                        Node item = cityInfo.item(j);
 
-                       if (item.getNodeName() == "id") {
-                            newCity.setId(Integer.parseInt(item.getTextContent()));
+                       switch(item.getNodeName()) {
+                           case "id":
+                               newCity.setId(Integer.parseInt(item.getTextContent()));
+                               break;
+                           case "vehiclesPerMinute":
+                               newCity.setVehiclesPerMinute(Integer.parseInt(item.getTextContent()));
+                               break;
                        }
-                       else if (item.getNodeName() == "vehiclesPerMinute") {
-                            newCity.setVehiclesPerMinute(Integer.parseInt(item.getTextContent()));
-                        }
                     }
                 }
 
@@ -98,15 +100,17 @@ public class InitParse {
                     for (int j = 0; j < roadInfo.getLength(); j++) {
                         Node item = roadInfo.item(j);
 
-                        if (item.getNodeName() == "type") {
-                            newRoad.setType(item.getTextContent());
+                        switch(item.getNodeName()) {
+                            case "type":
+                                newRoad.setType(item.getTextContent());
+                                break;
+                            /*case "departure":
+                                newRoad.setDeparture(Integer.parseInt(item.getTextContent()));
+                                break;
+                            case "arrival":
+                                newRoad.setArrival(Integer.parseInt(item.getTextContent()));
+                                break;*/
                         }
-                        /*else if (item.getNodeName() == "departure") {
-                            newRoad.setDeparture(Integer.parseInt(item.getTextContent()));
-                        }
-                        else if (item.getNodeName() == "arrival") {
-                            newRoad.setArrival(Integer.parseInt(item.getTextContent()));
-                        }*/
                     }
                 }
 
