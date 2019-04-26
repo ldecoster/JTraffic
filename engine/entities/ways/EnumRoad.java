@@ -1,5 +1,5 @@
 package engine.entities.ways;
 
-public enum EnumRoad{
+public enum EnumRoad {
     HIGHWAY, MAINROAD, COUNTRYROAD
 }

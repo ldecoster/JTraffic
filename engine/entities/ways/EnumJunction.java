@@ -1,5 +1,5 @@
 package engine.entities.ways;
 
-public enum EnumJunction{
+public enum EnumJunction {
     TRAFFICLIGHT, STOP, PRIORITY
 }
