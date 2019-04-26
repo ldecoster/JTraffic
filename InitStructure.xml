@@ -9,9 +9,7 @@
         <cities>
             <city x="90" y="100">
                 <id>0</id>
-                <vehiclesPerMinute>
-                    45
-                </vehiclesPerMinute>
+                <vehiclesPerMinute>45</vehiclesPerMinute>
             </city>
             <city x="55" y="55">
                 <id>1</id>

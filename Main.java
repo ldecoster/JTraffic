@@ -8,6 +8,7 @@ import org.w3c.dom.Element;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Vector;
+import java.util.Collections;
 
 import engine.entities.city.*;
 import engine.entities.utils.*;
@@ -22,8 +23,10 @@ public class Main {
 
         Vector<City> cities = new Vector<City>();
         Vector<Road> roads = new Vector<Road>();
-        Map<String, String> config = new HashMap<>();
+        Map<String, String> meta = new HashMap<>();
 
-        parser.createObjects(doc);
+        parser.createObjects(doc, cities, roads, meta);
+
+        System.out.println(Collections.singletonList(meta));
     }
 }
