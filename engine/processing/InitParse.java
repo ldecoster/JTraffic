@@ -67,7 +67,7 @@ public class InitParse {
 
                 if (child.getNodeType() == Node.ELEMENT_NODE) {
                     Coords coords = new Coords(Integer.parseInt(child.getAttributes().getNamedItem("x").getNodeValue()), Integer.parseInt(child.getAttributes().getNamedItem("y").getNodeValue()));
-                    newCity.setCoords(coords);
+                    newCity.setCoordinates(coords);
 
                     NodeList cityInfo= child.getChildNodes();
 
@@ -86,15 +86,32 @@ public class InitParse {
                 cities.add(newCity);
             }
 
-            /*NodeList roads = doc.getElementsByTagName("roads").item(0).getChildNodes();
+            NodeList inRoads = doc.getElementsByTagName("roads").item(0).getChildNodes();
 
-            for (int i = 0; i < meta.getLength(); i++) {
-                Node road = roads.item(i);
+            for (int i = 0; i < inRoads.getLength(); i++) {
+                child = inRoads.item(i);
+                Road newRoad = new Road();
 
-                if (road.getNodeType() == Node.ELEMENT_NODE) {
+                if (child.getNodeType() == Node.ELEMENT_NODE) {
+                    NodeList roadInfo= child.getChildNodes();
 
+                    for (int j = 0; j < roadInfo.getLength(); j++) {
+                        Node item = roadInfo.item(j);
+
+                        if (item.getNodeName() == "type") {
+                            newRoad.setType(item.getTextContent());
+                        }
+                        /*else if (item.getNodeName() == "departure") {
+                            newRoad.setDeparture(Integer.parseInt(item.getTextContent()));
+                        }
+                        else if (item.getNodeName() == "arrival") {
+                            newRoad.setArrival(Integer.parseInt(item.getTextContent()));
+                        }*/
+                    }
                 }
-            }*/
+
+                roads.add(newRoad);
+            }
 
             return true;
         }
