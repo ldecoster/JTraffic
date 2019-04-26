@@ -20,6 +20,16 @@ import engine.entities.utils.Coords;
 
 public class InitParse {
 
+    public City getCityById(Vector<City> cities, int id)  {
+        for (City c : cities) {
+            if (c.getId() == id) {
+                return c;
+            }
+        }
+
+        return null;
+    }
+
     public Document parseInitFile(String path) {
         try {
             File fXmlFile = new File(path);
@@ -71,7 +81,7 @@ public class InitParse {
 
                     NodeList cityInfo= child.getChildNodes();
 
-                   for (int j = 0; j < cityInfo.getLength(); j++) {
+                    for (int j = 0; j < cityInfo.getLength(); j++) {
                        Node item = cityInfo.item(j);
 
                        switch(item.getNodeName()) {
@@ -104,12 +114,12 @@ public class InitParse {
                             case "type":
                                 newRoad.setType(item.getTextContent());
                                 break;
-                            /*case "departure":
-                                newRoad.setDeparture(Integer.parseInt(item.getTextContent()));
+                            case "departure":
+                                newRoad.setDeparture(getCityById(cities, Integer.parseInt(item.getTextContent())));
                                 break;
                             case "arrival":
-                                newRoad.setArrival(Integer.parseInt(item.getTextContent()));
-                                break;*/
+                                newRoad.setArrival(getCityById(cities, Integer.parseInt(item.getTextContent())));
+                                break;
                         }
                     }
                 }
