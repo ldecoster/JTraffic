@@ -12,6 +12,7 @@ import java.util.Vector;
 import engine.entities.city.*;
 import engine.entities.utils.*;
 import engine.entities.ways.*;
+import engine.entities.vehicle.*;
 
 
 public class Main {
