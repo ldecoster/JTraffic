@@ -13,35 +13,35 @@
             </city>
             <city x="30" y="550">
                 <id>1</id>
-                <vehiculesPerMinute>60</vehiculesPerMinute>
+                <vehiclesPerMinute>60</vehiclesPerMinute>
             </city>
             <city x="250" y="400">
                 <id>2</id>
-                <vehiculesPerMinute>20</vehiculesPerMinute>
+                <vehiclesPerMinute>20</vehiclesPerMinute>
             </city>
             <city x="730" y="340">
                 <id>3</id>
-                <vehiculesPerMinute>90</vehiculesPerMinute>
+                <vehiclesPerMinute>90</vehiclesPerMinute>
             </city>
             <city x="50" y="400">
                 <id>4</id>
-                <vehiculesPerMinute>26</vehiculesPerMinute>
+                <vehiclesPerMinute>26</vehiclesPerMinute>
             </city>
             <city x="290" y="375">
                 <id>5</id>
-                <vehiculesPerMinute>35</vehiculesPerMinute>
+                <vehiclesPerMinute>35</vehiclesPerMinute>
             </city>
             <city x="170" y="550">
                 <id>6</id>
-                <vehiculesPerMinute>67</vehiculesPerMinute>
+                <vehiclesPerMinute>67</vehiclesPerMinute>
             </city>
             <city x="450" y="580">
                 <id>7</id>
-                <vehiculesPerMinute>38</vehiculesPerMinute>
+                <vehiclesPerMinute>38</vehiclesPerMinute>
             </city>
             <city x="6600" y="1750">
                 <id>8</id>
-                <vehiculesPerMinute>16</vehiculesPerMinute>
+                <vehiclesPerMinute>16</vehiclesPerMinute>
             </city>
         </cities>
         <roads>
