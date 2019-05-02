@@ -46,7 +46,7 @@ public class InitRendering extends Application {
             r.debug();
         }*/
 
-        makeScene customScene = new makeScene(cities, roads);
+        makeScene customScene = new makeScene(cities, roads, junctions);
         Scene scene = customScene.getScene();
 
         primaryStage.setScene(scene);
