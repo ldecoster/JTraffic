@@ -1,5 +1,6 @@
 import engine.processing.InitParse;
 
+import javafx.application.Application;
 import org.w3c.dom.Document;
 
 import java.util.Map;
@@ -9,6 +10,7 @@ import java.util.Collections;
 
 import engine.entities.city.*;
 import engine.entities.ways.*;
+import render.InitRendering;
 
 
 public class Main {
@@ -31,5 +33,7 @@ public class Main {
         for(Road r : roads) {
             r.debug();
         }
+
+        Application.launch(InitRendering.class, args);
     }
 }
