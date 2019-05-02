@@ -40,7 +40,7 @@ public class City {
     }
 
     public void debug() {
-        System.out.println("City " + this.id);
+        System.out.println("\n City " + this.id);
         System.out.println("x = " + this.coordinates.getX());
         System.out.println("y = " + this.coordinates.getY());
         System.out.println("Vehicles per Minute " + this.vehiclesPerMinute);
