@@ -1,4 +1,5 @@
 package engine.entities.ways;
+
 import engine.entities.city.*;
 
 public class Road {
@@ -41,10 +42,28 @@ public class Road {
         this.id = id;
     }
 
+    public int getSpeedLimit() {
+        return speedLimit;
+    }
+
+    public void setSpeedLimit(int speedLimit) {
+        this.speedLimit = speedLimit;
+    }
+
+    public int getNWays() {
+        return nWays;
+    }
+
+    public void setNWays(int nWays) {
+        this.nWays = nWays;
+    }
+
     public void debug() {
         System.out.println("Road " + this.id);
         System.out.println("Type " + this.type);
-        System.out.println("Departure " + this.departure.getId());
-        System.out.println("Arrival " + this.arrival.getId());
+        System.out.println("Departure City " + this.departure.getId());
+        System.out.println("Arrival City " + this.arrival.getId());
+        System.out.println("SpeedLimit " + this.speedLimit);
+        System.out.println("Number of ways " + this.nWays);
     }
 }

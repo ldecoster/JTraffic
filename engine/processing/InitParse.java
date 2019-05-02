@@ -101,6 +101,8 @@ public class InitParse {
 
             NodeList inRoads = doc.getElementsByTagName("roads").item(0).getChildNodes();
 
+            RoadPropreties rp = new RoadPropreties();
+
             for (int i = 0; i < inRoads.getLength(); i++) {
                 child = inRoads.item(i);
 
@@ -127,6 +129,7 @@ public class InitParse {
                                 break;
                         }
                     }
+                    rp.applyPropreties(newRoad);
                     roads.add(newRoad);
                 }
 
