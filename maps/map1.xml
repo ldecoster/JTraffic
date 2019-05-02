@@ -39,7 +39,7 @@
                 <id>7</id>
                 <vehiclesPerMinute>38</vehiclesPerMinute>
             </city>
-            <city x="6600" y="1750">
+            <city x="660" y="175">
                 <id>8</id>
                 <vehiclesPerMinute>16</vehiclesPerMinute>
             </city>
