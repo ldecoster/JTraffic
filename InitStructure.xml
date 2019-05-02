@@ -13,6 +13,7 @@
             </city>
             <city x="55" y="55">
                 <id>1</id>
+                <vehiclesPerMinute>37</vehiclesPerMinute>
             </city>
         </cities>
         <roads>

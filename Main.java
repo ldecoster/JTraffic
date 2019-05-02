@@ -28,5 +28,13 @@ public class Main {
         parser.createObjects(doc, cities, roads, meta);
 
         System.out.println(Collections.singletonList(meta));
+
+        for(City c : cities) {
+            c.debug();
+        }
+
+        for(Road r : roads) {
+            r.debug();
+        }
     }
 }

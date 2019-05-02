@@ -6,12 +6,10 @@ import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
-import org.w3c.dom.Element;
 
 import java.io.File;
 
 import java.util.Vector;
-import java.util.HashMap;
 import java.util.Map;
 
 import engine.entities.city.*;
@@ -73,9 +71,10 @@ public class InitParse {
 
             for (int i = 0; i < inCities.getLength(); i++) {
                 child = inCities.item(i);
-                City newCity = new City();
 
                 if (child.getNodeType() == Node.ELEMENT_NODE) {
+                    City newCity = new City();
+
                     Coords coords = new Coords(Integer.parseInt(child.getAttributes().getNamedItem("x").getNodeValue()), Integer.parseInt(child.getAttributes().getNamedItem("y").getNodeValue()));
                     newCity.setCoordinates(coords);
 
@@ -93,18 +92,24 @@ public class InitParse {
                                break;
                        }
                     }
+                    cities.add(newCity);
                 }
 
-                cities.add(newCity);
             }
+
+            int roadId = 0;
 
             NodeList inRoads = doc.getElementsByTagName("roads").item(0).getChildNodes();
 
             for (int i = 0; i < inRoads.getLength(); i++) {
                 child = inRoads.item(i);
-                Road newRoad = new Road();
 
                 if (child.getNodeType() == Node.ELEMENT_NODE) {
+                    Road newRoad = new Road();
+
+                    newRoad.setId(roadId);
+                    roadId++;
+
                     NodeList roadInfo= child.getChildNodes();
 
                     for (int j = 0; j < roadInfo.getLength(); j++) {
@@ -122,9 +127,9 @@ public class InitParse {
                                 break;
                         }
                     }
+                    roads.add(newRoad);
                 }
 
-                roads.add(newRoad);
             }
 
             return true;

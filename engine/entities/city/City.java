@@ -2,9 +2,9 @@ package engine.entities.city;
 import engine.entities.utils.*;
 
 public class City {
-    private int id;
+    private int id = 99;
     private Coords coordinates;
-    private int vehiclesPerMinute;
+    private int vehiclesPerMinute = 99;
 
     public City(int id, Coords coordinates, int vehiclesPerMinute) {
         this.id = id;
@@ -12,7 +12,8 @@ public class City {
         this.vehiclesPerMinute = vehiclesPerMinute;
     }
 
-    public City() {}
+    public City() {
+    }
 
     public int getId() {
         return id;
@@ -36,5 +37,12 @@ public class City {
 
     public void setVehiclesPerMinute(int vehiclesPerMinute) {
         this.vehiclesPerMinute = vehiclesPerMinute;
+    }
+
+    public void debug() {
+        System.out.println("City " + this.id);
+        System.out.println("x = " + this.coordinates.getX());
+        System.out.println("y = " + this.coordinates.getY());
+        System.out.println("Vehicles per Minute " + this.vehiclesPerMinute);
     }
 }
