@@ -17,6 +17,11 @@ public class JunctionCreator {
 
                 v1 = roads.get(i).computeEquation();
 
+                xmin = Math.min(roads.get(i).getDeparture().getCoordinates().getX(), roads.get(i).getArrival().getCoordinates().getX()) + 2;
+                xmax = Math.max(roads.get(i).getDeparture().getCoordinates().getX(), roads.get(i).getArrival().getCoordinates().getX()) - 2;
+                ymin = Math.min(roads.get(i).getDeparture().getCoordinates().getY(), roads.get(i).getArrival().getCoordinates().getY()) + 2;
+                ymax = Math.max(roads.get(i).getDeparture().getCoordinates().getY(), roads.get(i).getArrival().getCoordinates().getY()) - 2;
+
                 for (int j = i; j < roads.size(); j++) {
                     if (i != j && roads.get(j).getType() != EnumRoad.HIGHWAY) {
 
@@ -27,10 +32,6 @@ public class JunctionCreator {
                         if (x > 0 && x < 800 && y > 0 && y < 600) {
 
                             // Exclude the extremities
-                            xmin = Math.min(Math.min(roads.get(i).getDeparture().getCoordinates().getX(), roads.get(j).getDeparture().getCoordinates().getX()), Math.min(roads.get(i).getArrival().getCoordinates().getX(), roads.get(j).getArrival().getCoordinates().getX()));
-                            xmax = Math.max(Math.max(roads.get(i).getDeparture().getCoordinates().getX(), roads.get(j).getDeparture().getCoordinates().getX()), Math.max(roads.get(i).getArrival().getCoordinates().getX(), roads.get(j).getArrival().getCoordinates().getX()));
-                            ymin = Math.min(Math.min(roads.get(i).getDeparture().getCoordinates().getY(), roads.get(j).getDeparture().getCoordinates().getY()), Math.min(roads.get(i).getArrival().getCoordinates().getX(), roads.get(j).getArrival().getCoordinates().getX()));
-                            ymax = Math.max(Math.max(roads.get(i).getDeparture().getCoordinates().getY(), roads.get(j).getDeparture().getCoordinates().getY()), Math.max(roads.get(i).getArrival().getCoordinates().getX(), roads.get(j).getArrival().getCoordinates().getX()));
 
                             if(x > xmin && x < xmax && y > ymin && y < ymax) {
                                 // System.out.println("(" + x + "," + y + ")");
