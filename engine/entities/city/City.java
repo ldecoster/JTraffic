@@ -1,10 +1,13 @@
 package engine.entities.city;
 import engine.entities.utils.*;
 
+import java.util.Vector;
+
 public class City {
     private int id = 99;
     private Coords coordinates;
     private int vehiclesPerMinute = 99;
+    private Vector<City> reachable;
 
     public City(int id, Coords coordinates, int vehiclesPerMinute) {
         this.id = id;
@@ -37,6 +40,14 @@ public class City {
 
     public void setVehiclesPerMinute(int vehiclesPerMinute) {
         this.vehiclesPerMinute = vehiclesPerMinute;
+    }
+
+    public Vector<City> getReachable() {
+        return reachable;
+    }
+
+    public void setReachable(Vector<City> reachable) {
+        this.reachable = reachable;
     }
 
     public void debug() {

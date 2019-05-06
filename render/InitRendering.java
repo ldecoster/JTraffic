@@ -3,9 +3,11 @@ package render;
 import engine.entities.city.City;
 import engine.entities.ways.Junction;
 import engine.entities.ways.Road;
+import engine.entities.vehicle.Vehicle;
 import engine.processing.InitParse;
 
 import engine.processing.JunctionCreator;
+import engine.processing.VehiclesCreator;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -29,6 +31,7 @@ public class InitRendering extends Application {
         Vector<Road> roads = new Vector<Road>();
         Map<String, String> meta = new HashMap<>();
         Vector<Junction> junctions = new Vector<Junction>();
+        Vector<Vehicle> vehicles = new Vector<Vehicle>();
 
         parser.createObjects(doc, cities, roads, meta);
 

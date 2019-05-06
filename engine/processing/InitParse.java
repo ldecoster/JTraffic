@@ -3,6 +3,7 @@ package engine.processing;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 
+import engine.processing.utils.ReachableCities;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
@@ -133,6 +134,12 @@ public class InitParse {
                     roads.add(newRoad);
                 }
 
+            }
+
+
+            // Get reachables cities from this city
+            for (int i = 0; i < cities.size(); i++) {
+                cities.get(i).setReachable(ReachableCities.getCities(roads, cities.get(i)));
             }
 
             return true;
