@@ -10,6 +10,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.StrokeType;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 import java.util.Vector;
 
@@ -35,7 +37,9 @@ public class makeScene {
 
     private void drawCities() {
         Group CitiesDrawing = new Group();
+        Group CitiesId = new Group();
         for (City city : cities) {
+            System.out.println(city.getId());
             Circle circle = new Circle(15, Color.web("red"));
             circle.setCenterX(city.getCoordinates().getX());
             circle.setCenterY(city.getCoordinates().getY());
@@ -43,9 +47,15 @@ public class makeScene {
             circle.setStroke(Color.web("white", 1));
             circle.setStrokeWidth(2);
             CitiesDrawing.getChildren().add(circle);
+
+            // For debug purpose
+            Text cityID = new Text(city.getCoordinates().getX()-7, city.getCoordinates().getY()+7, String.valueOf(city.getId()));
+            cityID.setFont(new Font(22));
+            CitiesId.getChildren().add(cityID);
         }
 
         this.root.getChildren().add(CitiesDrawing);
+        this.root.getChildren().add(CitiesId);
     }
 
     private void drawRoads() {
