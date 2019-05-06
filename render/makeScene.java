@@ -1,6 +1,7 @@
 package render;
 
 import engine.entities.city.City;
+import engine.entities.ways.EnumRoad;
 import engine.entities.ways.Junction;
 import engine.entities.ways.Road;
 import javafx.scene.Group;
@@ -12,16 +13,10 @@ import javafx.scene.shape.StrokeType;
 
 import java.util.Vector;
 
-import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
-
 public class makeScene {
 
     private Scene customScene;
     private Group root = new Group();
-    private Group circles = new Group();
-    private Group circles1 = new Group();
-    private Group lines = new Group();
 
     private Vector<City> cities;
     private Vector<Road> roads;
@@ -38,7 +33,8 @@ public class makeScene {
         drawJunctions();
     }
 
-    public void drawCities() {
+    private void drawCities() {
+        Group CitiesDrawing = new Group();
         for (City city : cities) {
             Circle circle = new Circle(15, Color.web("red"));
             circle.setCenterX(city.getCoordinates().getX());
@@ -46,27 +42,45 @@ public class makeScene {
             circle.setStrokeType(StrokeType.OUTSIDE);
             circle.setStroke(Color.web("white", 1));
             circle.setStrokeWidth(2);
-            this.circles.getChildren().add(circle);
+            CitiesDrawing.getChildren().add(circle);
         }
 
-        this.root.getChildren().add(this.circles);
+        this.root.getChildren().add(CitiesDrawing);
     }
 
-    public void drawRoads() {
+    private void drawRoads() {
+        Group RoadsDrawing = new Group();
         for (Road road : roads) {
             Line line = new Line();
-            line.setStroke(Color.web("blue", 1));
             line.setStartX(road.getDeparture().getCoordinates().getX());
             line.setStartY(road.getDeparture().getCoordinates().getY());
             line.setEndX(road.getArrival().getCoordinates().getX());
             line.setEndY(road.getArrival().getCoordinates().getY());
-            this.lines.getChildren().add(line);
+
+            EnumRoad roadType = road.getType();
+            switch (roadType) {
+                case HIGHWAY:
+                    line.setStroke(Color.web("#2D2D99", 1));
+                    line.setStrokeWidth(3);
+                    break;
+                case MAINROAD:
+                    line.setStroke(Color.web("#0000FF", 1));
+                    line.setStrokeWidth(2);
+                    break;
+                case COUNTRYROAD:
+                    line.setStroke(Color.web("#6666FF", 1));
+                    line.setStrokeWidth(1);
+                    break;
+            }
+
+            RoadsDrawing.getChildren().add(line);
         }
 
-        this.root.getChildren().add(this.lines);
+        this.root.getChildren().add(RoadsDrawing);
     }
 
-    public void drawJunctions() {
+    private void drawJunctions() {
+        Group JunctionsDrawing = new Group();
         for (Junction junction : junctions) {
             Circle circle = new Circle(5, Color.web("green"));
             circle.setCenterX(junction.getCoordinates().getX());
@@ -74,20 +88,19 @@ public class makeScene {
             circle.setStrokeType(StrokeType.OUTSIDE);
             circle.setStroke(Color.web("white", 1));
             circle.setStrokeWidth(2);
-            this.circles1.getChildren().add(circle);
+            JunctionsDrawing.getChildren().add(circle);
         }
 
-        this.root.getChildren().add(this.circles1);
+        this.root.getChildren().add(JunctionsDrawing);
     }
 
     public Scene getScene() {
-        root.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                System.out.println("X : " + event.getSceneX());
-                System.out.println("Y : " + event.getSceneY());
-            }
+        // Debug function
+        root.setOnMouseClicked(event -> {
+            System.out.println("X : " + event.getSceneX());
+            System.out.println("Y : " + event.getSceneY());
         });
+
         return this.customScene;
     }
 
