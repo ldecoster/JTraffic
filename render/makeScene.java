@@ -39,7 +39,7 @@ public class makeScene {
         Group CitiesDrawing = new Group();
         Group CitiesId = new Group();
         for (City city : cities) {
-            System.out.println(city.getId());
+            // System.out.println(city.getId());
             Circle circle = new Circle(15, Color.web("red"));
             circle.setCenterX(city.getCoordinates().getX());
             circle.setCenterY(city.getCoordinates().getY());

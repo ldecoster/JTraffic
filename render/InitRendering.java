@@ -32,6 +32,7 @@ public class InitRendering extends Application {
         Map<String, String> meta = new HashMap<>();
         Vector<Junction> junctions = new Vector<Junction>();
         Vector<Vehicle> vehicles = new Vector<Vehicle>();
+        Vector<VehiclesCreator> creators = new Vector<VehiclesCreator>();
 
         parser.createObjects(doc, cities, roads, meta);
 
@@ -55,6 +56,14 @@ public class InitRendering extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("JTraffic");
         primaryStage.show();
+
+        for (City c : cities) {
+            creators.add(new VehiclesCreator(vehicles, roads, c));
+        }
+
+        for (VehiclesCreator vc : creators) {
+            vc.start();
+        }
     }
 
 }
