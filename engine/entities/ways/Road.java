@@ -5,7 +5,7 @@ import engine.entities.city.*;
 import java.util.Vector;
 
 public class Road {
-    private Vector<Float> v = new Vector<Float>();
+    private Vector<Float> equation = new Vector<Float>();
     private int id;
     private EnumRoad type;
     private City departure;
@@ -61,12 +61,12 @@ public class Road {
         this.nWays = nWays;
     }
 
-    public void setV(Vector<Float> v) {
-        this.v = v;
+    public void setEquation(Vector<Float> equation) {
+        this.equation = equation;
     }
 
-    public Vector<Float> getV() {
-        return v;
+    public Vector<Float> getEquation() {
+        return equation;
     }
 
     public Vector<Float> computeEquation() {
@@ -74,15 +74,15 @@ public class Road {
         float a = ((float) arrival.getCoordinates().getY() - (float) departure.getCoordinates().getY())/((float) arrival.getCoordinates().getX() - (float) departure.getCoordinates().getX());
         float b = arrival.getCoordinates().getY() - a * arrival.getCoordinates().getX();
 
-        this.v.add(a);
-        this.v.add(b);
+        this.equation.add(a);
+        this.equation.add(b);
 
         /*System.out.println(a + " * x + " + b);
         System.out.println("(" + departure.getCoordinates().getX() + "," + departure.getCoordinates().getY() + ") et (" + arrival.getCoordinates().getX() + "," + arrival.getCoordinates().getY() + ")");
         System.out.println(arrival.getCoordinates().getY() - departure.getCoordinates().getY());
         System.out.println(arrival.getCoordinates().getX() - departure.getCoordinates().getX());*/
 
-        return this.v;
+        return this.equation;
     }
 
 
