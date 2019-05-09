@@ -7,12 +7,14 @@ import engine.processing.utils.ReachableCities;
 import engine.processing.utils.WayFinder;
 
 import java.util.Vector;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class VehiclesCreator extends Thread{
     private Vector<Vehicle> vehicles;
     private Vector<City> reachable;
     private Vector<Road> roads;
     private City city;
+    private AtomicBoolean running = new AtomicBoolean(false);
 
     public VehiclesCreator(Vector<Vehicle> v, Vector<Road> r, City c) {
         this.vehicles = v;
@@ -22,10 +24,19 @@ public class VehiclesCreator extends Thread{
         this.reachable = ReachableCities.getCities(this.roads, this.city);
     }
 
+    public AtomicBoolean getRunning() {
+        return running;
+    }
+
+    public void setRunning(AtomicBoolean running) {
+        this.running = running;
+    }
+
     public void run() {
         float delay = 60 / (float) this.city.getVehiclesPerMinute();
+        running.set(true);
 
-        while (true) {
+        while (running.get()) {
             Vehicle newVehicle = new Vehicle();
 
             newVehicle.setDeparture(this.city);
