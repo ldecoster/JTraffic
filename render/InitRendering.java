@@ -12,12 +12,14 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import javafx.stage.WindowEvent;
 import org.w3c.dom.Document;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 
 public class InitRendering extends Application {
@@ -64,6 +66,13 @@ public class InitRendering extends Application {
         for (VehiclesCreator vc : creators) {
             vc.start();
         }
+
+        primaryStage.setOnCloseRequest((WindowEvent we) -> {
+            System.out.println("Stage is closing...");
+            for (VehiclesCreator vc : creators) {
+                vc.setRunning(new AtomicBoolean(false));
+            }
+        });
     }
 
 }
