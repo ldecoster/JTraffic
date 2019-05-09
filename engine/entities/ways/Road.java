@@ -1,17 +1,19 @@
 package engine.entities.ways;
 
 import engine.entities.city.*;
+import engine.entities.utils.Coords;
 
 import java.util.Vector;
 
 public class Road {
-    private Vector<Float> equation = new Vector<Float>();
+    private Vector<Float> equation = new Vector<>();
     private int id;
     private EnumRoad type;
     private City departure;
     private City arrival;
     private int speedLimit;
     private int nWays;
+    private Vector<Integer> vectorDirector = new Vector<>();
 
     public EnumRoad getType() {
         return type;
@@ -67,6 +69,17 @@ public class Road {
 
     public Vector<Float> getEquation() {
         return equation;
+    }
+
+    public Coords getNextPoint(int t){
+        if (vectorDirector.isEmpty()){
+            vectorDirector.add(this.arrival.getCoordinates().getX() - this.departure.getCoordinates().getX());
+            vectorDirector.add(this.arrival.getCoordinates().getY() - this.departure.getCoordinates().getY());
+        }
+        Coords tmp = new Coords(0,0);
+        tmp.setX(this.departure.getCoordinates().getX() + vectorDirector.get(0)*t);
+        tmp.setY(this.departure.getCoordinates().getY() + vectorDirector.get(1)*t);
+        return tmp;
     }
 
     public Vector<Float> computeEquation() {
