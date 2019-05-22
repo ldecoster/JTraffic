@@ -1,6 +1,7 @@
 package render;
 
 import engine.entities.city.City;
+import engine.entities.vehicle.Vehicle;
 import engine.entities.ways.EnumRoad;
 import engine.entities.ways.Junction;
 import engine.entities.ways.Road;
@@ -23,6 +24,7 @@ public class makeScene {
     private Vector<City> cities;
     private Vector<Road> roads;
     private Vector<Junction> junctions;
+    private Vector<Vehicle> vehicles;
 
     public makeScene(Vector<City> cities, Vector<Road> roads, Vector<Junction> junctions) {
         this.cities = cities;
@@ -33,6 +35,11 @@ public class makeScene {
         drawCities();
         drawRoads();
         drawJunctions();
+    }
+
+    public void updateScene(Vector<Vehicle> vehicles) {
+        this.vehicles = vehicles;
+        this.drawVehicles();
     }
 
     private void drawCities() {
@@ -102,6 +109,22 @@ public class makeScene {
         }
 
         this.root.getChildren().add(JunctionsDrawing);
+    }
+
+    private void drawVehicles() {
+        Group VehiclesDrawing = new Group();
+
+        for (Vehicle vehicle : vehicles) {
+            Circle circle = new Circle(3, Color.web("yellow"));
+            circle.setCenterX(vehicle.getCurrentPos().getX());
+            circle.setCenterY(vehicle.getCurrentPos().getY());
+            circle.setStrokeType(StrokeType.OUTSIDE);
+            circle.setStroke(Color.web("white", 1));
+            circle.setStrokeWidth(2);
+            VehiclesDrawing.getChildren().add(circle);
+        }
+
+        this.root.getChildren().add(VehiclesDrawing);
     }
 
     public Scene getScene() {

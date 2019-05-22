@@ -8,6 +8,7 @@ import engine.processing.InitParse;
 
 import engine.processing.JunctionCreator;
 import engine.processing.VehiclesCreator;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -44,6 +45,14 @@ public class InitRendering extends Application {
 
         jc.createJunctions(roads, junctions);
 
+        for (City c : cities) {
+            creators.add(new VehiclesCreator(vehicles, roads, c));
+        }
+
+        for (VehiclesCreator vc : creators) {
+            vc.start();
+        }
+
         /*for(City c : cities) {
             c.debug();
         }
@@ -59,13 +68,20 @@ public class InitRendering extends Application {
         primaryStage.setTitle("JTraffic");
         primaryStage.show();
 
-        for (City c : cities) {
-            creators.add(new VehiclesCreator(vehicles, roads, c));
-        }
+        new AnimationTimer() {
+            double t = 0;
 
-        for (VehiclesCreator vc : creators) {
-            vc.start();
-        }
+            @Override
+            public void handle(long now) {
+                  t++;
+                if(t == 60) {
+                    t = 0;
+                    customScene.updateScene(vehicles);
+                }
+            }
+        }.start();
+
+        //UpdateScene updateScene = new UpdateScene(customScene.getScene(), creators);
 
         primaryStage.setOnCloseRequest((WindowEvent we) -> {
             System.out.println("Stage is closing...");
