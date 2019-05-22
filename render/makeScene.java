@@ -120,17 +120,21 @@ public class makeScene {
 
         synchronized (vehicles) {
             Iterator<Vehicle> it = vehicles.iterator();
+
             while (it.hasNext()) {
                 Vehicle vehicle = it.next();
-                Circle circle = new Circle(3, Color.web("yellow"));
+
+                Circle circle = vehicle.getDrawing();
                 circle.setCenterX(vehicle.getCurrentPos().getX());
                 circle.setCenterY(vehicle.getCurrentPos().getY());
-                circle.setStrokeType(StrokeType.OUTSIDE);
-                circle.setStroke(Color.web("white", 1));
-                circle.setStrokeWidth(2);
-                VehiclesDrawing.getChildren().add(circle);
-            }
+                vehicle.setDrawing(circle);
 
+                if(!vehicle.isStarted()) {
+                    VehiclesDrawing.getChildren().add(vehicle.getDrawing());
+                } else if(vehicle.isArrived()) {
+                    //VehiclesDrawing.getChildren().remove(circle);
+                }
+            }
             av.moveAllVehicles();
         }
 

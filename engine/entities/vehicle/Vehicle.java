@@ -2,6 +2,9 @@ package engine.entities.vehicle;
 import engine.entities.city.*;
 import engine.entities.utils.*;
 import engine.entities.ways.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.StrokeType;
 
 public class Vehicle {
     private City departure;
@@ -12,6 +15,16 @@ public class Vehicle {
     private boolean started = false;
     private boolean arrived = false;
     private float t = 0;
+
+    private Circle drawing;
+
+    public Vehicle() {
+        Circle circle = new Circle(3, Color.web("yellow"));
+        circle.setStrokeType(StrokeType.OUTSIDE);
+        circle.setStroke(Color.web("white", 1));
+        circle.setStrokeWidth(2);
+        this.setDrawing(circle);
+    }
 
     public City getDeparture() {
         return departure;
@@ -75,5 +88,13 @@ public class Vehicle {
 
     public void setT(float t) {
         this.t = t;
+    }
+
+    public Circle getDrawing() {
+        return drawing;
+    }
+
+    public void setDrawing(Circle drawing) {
+        this.drawing = drawing;
     }
 }

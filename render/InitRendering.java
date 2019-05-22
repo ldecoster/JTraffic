@@ -73,8 +73,6 @@ public class InitRendering extends Application {
             }
         }.start();
 
-        //UpdateScene updateScene = new UpdateScene(customScene.getScene(), creators);
-
         primaryStage.setOnCloseRequest((WindowEvent we) -> {
             System.out.println("Stage is closing...");
             for (VehiclesCreator vc : creators) {
