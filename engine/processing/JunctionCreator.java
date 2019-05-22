@@ -40,11 +40,10 @@ public class JunctionCreator {
                                 Coords coords = new Coords((int) x, (int) y);
                                 newJunction.setCoordinates(coords);
 
+
                                 junctions.add(newJunction);
                             }
                         }
-
-
                     }
                 }
             }
