@@ -11,6 +11,7 @@ public class Vehicle {
     private Road currentRoad;
     private boolean started = false;
     private boolean arrived = false;
+    private int t = 0;
 
     public City getDeparture() {
         return departure;
@@ -66,5 +67,13 @@ public class Vehicle {
 
     public void setArrived(boolean arrived) {
         this.arrived = arrived;
+    }
+
+    public int getT() {
+        return t;
+    }
+
+    public void setT(int t) {
+        this.t = t;
     }
 }

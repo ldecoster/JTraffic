@@ -53,14 +53,6 @@ public class InitRendering extends Application {
             vc.start();
         }
 
-        /*for(City c : cities) {
-            c.debug();
-        }
-
-        for(Road r : roads) {
-            r.debug();
-        }*/
-
         makeScene customScene = new makeScene(cities, roads, junctions);
         Scene scene = customScene.getScene();
 
