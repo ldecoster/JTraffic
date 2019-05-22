@@ -40,7 +40,7 @@ public class VehiclesCreator extends Thread{
             Vehicle newVehicle = new Vehicle();
 
             newVehicle.setDeparture(this.city);
-            newVehicle.setArrival(this.reachable.get(ReachableCities.getRandomNumberInRange(0, this.reachable.size()-1)));
+            newVehicle.setArrival(this.reachable.get(ReachableCities.getRandomNumberInRange(0, this.reachable.size() - 1)));
             newVehicle.setCurrentPos(this.city.getCoordinates());
             newVehicle.setCurrentRoad(WayFinder.findRoad(this.roads, this.city, newVehicle.getArrival()));
 

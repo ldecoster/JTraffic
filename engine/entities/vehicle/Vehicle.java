@@ -9,6 +9,8 @@ public class Vehicle {
     private Coords currentPos;
     private int currentWay = 0;
     private Road currentRoad;
+    private boolean started = false;
+    private boolean arrived = false;
 
     public City getDeparture() {
         return departure;
@@ -48,5 +50,21 @@ public class Vehicle {
 
     public void setCurrentRoad(Road currentRoad) {
         this.currentRoad = currentRoad;
+    }
+
+    public boolean isStarted() {
+        return started;
+    }
+
+    public void setStarted(boolean started) {
+        this.started = started;
+    }
+
+    public boolean isArrived() {
+        return arrived;
+    }
+
+    public void setArrived(boolean arrived) {
+        this.arrived = arrived;
     }
 }
