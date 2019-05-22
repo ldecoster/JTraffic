@@ -80,15 +80,15 @@ public class makeScene {
             switch (roadType) {
                 case HIGHWAY:
                     line.setStroke(Color.web("#2D2D99", 1));
-                    line.setStrokeWidth(3);
+                    line.setStrokeWidth(8);
                     break;
                 case MAINROAD:
-                    line.setStroke(Color.web("#0000FF", 1));
-                    line.setStrokeWidth(2);
+                    line.setStroke(Color.web("#FFB266", 1));
+                    line.setStrokeWidth(5);
                     break;
                 case COUNTRYROAD:
-                    line.setStroke(Color.web("#6666FF", 1));
-                    line.setStrokeWidth(1);
+                    line.setStroke(Color.web("#FF66FF", 1));
+                    line.setStrokeWidth(2);
                     break;
             }
 
