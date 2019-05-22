@@ -14,6 +14,7 @@ import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import java.util.Iterator;
 import java.util.Vector;
 
 public class makeScene {
@@ -114,14 +115,18 @@ public class makeScene {
     private void drawVehicles() {
         Group VehiclesDrawing = new Group();
 
-        for (Vehicle vehicle : vehicles) {
-            Circle circle = new Circle(3, Color.web("yellow"));
-            circle.setCenterX(vehicle.getCurrentPos().getX());
-            circle.setCenterY(vehicle.getCurrentPos().getY());
-            circle.setStrokeType(StrokeType.OUTSIDE);
-            circle.setStroke(Color.web("white", 1));
-            circle.setStrokeWidth(2);
-            VehiclesDrawing.getChildren().add(circle);
+        synchronized (vehicles) {
+            Iterator<Vehicle> it = vehicles.iterator();
+            while (it.hasNext()) {
+                Vehicle vehicle = it.next();
+                Circle circle = new Circle(3, Color.web("yellow"));
+                circle.setCenterX(vehicle.getCurrentPos().getX());
+                circle.setCenterY(vehicle.getCurrentPos().getY());
+                circle.setStrokeType(StrokeType.OUTSIDE);
+                circle.setStroke(Color.web("white", 1));
+                circle.setStrokeWidth(2);
+                VehiclesDrawing.getChildren().add(circle);
+            }
         }
 
         this.root.getChildren().add(VehiclesDrawing);
