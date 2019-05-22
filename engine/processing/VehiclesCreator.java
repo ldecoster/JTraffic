@@ -47,7 +47,7 @@ public class VehiclesCreator extends Thread{
             this.vehicles.add(newVehicle);
 
             try {
-                Thread.sleep((int) delay * 1000);
+                Thread.sleep((int) (delay * 1000));
             }
             catch (InterruptedException e) {
                 e.printStackTrace();
