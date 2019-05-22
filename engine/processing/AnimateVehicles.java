@@ -10,23 +10,44 @@ public class AnimateVehicles {
 
     private Vector<Vehicle> vehicles;
 
+    public AnimateVehicles(Vector<Vehicle> v) {
+        this.vehicles = v;
+    }
+
     public void moveAllVehicles() {
         Coords tmpCoords;
         Road tmpRoad;
-        int tmpT;
-        int speed;
-        int nextT;
+        float tmpT;
+        float speed;
+        float nextT;
 
+        // Foreach vehicle
         for (Vehicle v : vehicles) {
-            tmpRoad = v.getCurrentRoad();
-            tmpT = v.getT();
-            speed = tmpRoad.getSpeedLimit();
 
-            nextT = tmpT + (1 / (200-speed));
+            // If vehicle is not arrived to destination (t < 1)
+            if (!v.isArrived()) {
+                tmpRoad = v.getCurrentRoad();
+                tmpT = v.getT();
+                speed = tmpRoad.getSpeedLimit();
 
-            tmpCoords = tmpRoad.getNextPoint(nextT);
-            v.setT(nextT);
-            v.setCurrentPos(tmpCoords);
+                // Compute next point
+                nextT = tmpT + (1 / (150-speed));
+
+                tmpCoords = tmpRoad.getNextPoint(nextT);
+                v.setT(nextT);
+                v.setCurrentPos(tmpCoords);
+
+                // If it's first time we move the vehicle
+                if (!v.isStarted()) {
+                    v.setStarted(true);
+                }
+
+                // If the vehicle is arrived, stop it
+                if (nextT >= 1) {
+                    v.setArrived(true);
+                }
+            }
+
         }
     }
 }

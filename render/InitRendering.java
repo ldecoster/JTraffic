@@ -66,7 +66,7 @@ public class InitRendering extends Application {
             @Override
             public void handle(long now) {
                   t++;
-                if(t == 60) {
+                if(t == 30) {
                     t = 0;
                     customScene.updateScene(vehicles);
                 }

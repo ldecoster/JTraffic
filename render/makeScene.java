@@ -5,6 +5,7 @@ import engine.entities.vehicle.Vehicle;
 import engine.entities.ways.EnumRoad;
 import engine.entities.ways.Junction;
 import engine.entities.ways.Road;
+import engine.processing.AnimateVehicles;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
@@ -115,6 +116,8 @@ public class makeScene {
     private void drawVehicles() {
         Group VehiclesDrawing = new Group();
 
+        AnimateVehicles av = new AnimateVehicles(vehicles);
+
         synchronized (vehicles) {
             Iterator<Vehicle> it = vehicles.iterator();
             while (it.hasNext()) {
@@ -127,6 +130,8 @@ public class makeScene {
                 circle.setStrokeWidth(2);
                 VehiclesDrawing.getChildren().add(circle);
             }
+
+            av.moveAllVehicles();
         }
 
         this.root.getChildren().add(VehiclesDrawing);

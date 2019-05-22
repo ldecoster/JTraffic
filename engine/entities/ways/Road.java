@@ -71,14 +71,14 @@ public class Road {
         return equation;
     }
 
-    public Coords getNextPoint(int t){
+    public Coords getNextPoint(float t){
         if (vectorDirector.isEmpty()){
             vectorDirector.add(this.arrival.getCoordinates().getX() - this.departure.getCoordinates().getX());
             vectorDirector.add(this.arrival.getCoordinates().getY() - this.departure.getCoordinates().getY());
         }
         Coords tmp = new Coords(0,0);
-        tmp.setX(this.departure.getCoordinates().getX() + vectorDirector.get(0)*t);
-        tmp.setY(this.departure.getCoordinates().getY() + vectorDirector.get(1)*t);
+        tmp.setX((int) (this.departure.getCoordinates().getX() + vectorDirector.get(0)*t));
+        tmp.setY((int) (this.departure.getCoordinates().getY() + vectorDirector.get(1)*t));
         return tmp;
     }
 
