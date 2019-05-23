@@ -28,6 +28,12 @@ public class makeScene {
     private Vector<Junction> junctions;
     private Vector<Vehicle> vehicles;
 
+    static Group VehiclesDrawing = new Group();
+    static Group CitiesDrawing = new Group();
+    static Group CitiesId = new Group();
+    static Group RoadsDrawing = new Group();
+    static Group JunctionsDrawing = new Group();
+
     public makeScene(Vector<City> cities, Vector<Road> roads, Vector<Junction> junctions) {
         this.cities = cities;
         this.roads = roads;
@@ -37,6 +43,8 @@ public class makeScene {
         drawCities();
         drawRoads();
         drawJunctions();
+
+        this.root.getChildren().add(VehiclesDrawing);
     }
 
     public void updateScene(Vector<Vehicle> vehicles) {
@@ -45,8 +53,6 @@ public class makeScene {
     }
 
     private void drawCities() {
-        Group CitiesDrawing = new Group();
-        Group CitiesId = new Group();
         for (City city : cities) {
             // System.out.println(city.getId());
             Circle circle = new Circle(15, Color.web("red"));
@@ -68,7 +74,6 @@ public class makeScene {
     }
 
     private void drawRoads() {
-        Group RoadsDrawing = new Group();
         for (Road road : roads) {
             Line line = new Line();
             line.setStartX(road.getDeparture().getCoordinates().getX());
@@ -99,7 +104,6 @@ public class makeScene {
     }
 
     private void drawJunctions() {
-        Group JunctionsDrawing = new Group();
         for (Junction junction : junctions) {
             Circle circle = new Circle(5, Color.web("green"));
             circle.setCenterX(junction.getCoordinates().getX());
@@ -114,8 +118,6 @@ public class makeScene {
     }
 
     private void drawVehicles() {
-        Group VehiclesDrawing = new Group();
-
         AnimateVehicles av = new AnimateVehicles(vehicles);
 
         synchronized (vehicles) {
@@ -132,13 +134,11 @@ public class makeScene {
                 if(!vehicle.isStarted()) {
                     VehiclesDrawing.getChildren().add(vehicle.getDrawing());
                 } else if(vehicle.isArrived()) {
-                    //VehiclesDrawing.getChildren().remove(circle);
+                    VehiclesDrawing.getChildren().remove(circle);
                 }
             }
             av.moveAllVehicles();
         }
-
-        this.root.getChildren().add(VehiclesDrawing);
     }
 
     public Scene getScene() {
