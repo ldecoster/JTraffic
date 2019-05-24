@@ -118,7 +118,7 @@ public class makeScene {
     }
 
     private void drawVehicles() {
-        AnimateVehicles av = new AnimateVehicles(vehicles);
+        AnimateVehicles av = new AnimateVehicles(vehicles, junctions);
 
         synchronized (vehicles) {
             Iterator<Vehicle> it = vehicles.iterator();
