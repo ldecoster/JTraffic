@@ -30,7 +30,7 @@ public class makeScene {
 
     static Group VehiclesDrawing = new Group();
     static Group CitiesDrawing = new Group();
-    static Group CitiesId = new Group();
+    //static Group CitiesId = new Group();
     static Group RoadsDrawing = new Group();
     static Group JunctionsDrawing = new Group();
 
@@ -64,13 +64,13 @@ public class makeScene {
             CitiesDrawing.getChildren().add(circle);
 
             // For debug purpose
-            Text cityID = new Text(city.getCoordinates().getX()-7, city.getCoordinates().getY()+7, String.valueOf(city.getId()));
-            cityID.setFont(new Font(22));
-            CitiesId.getChildren().add(cityID);
+            //Text cityID = new Text(city.getCoordinates().getX()-7, city.getCoordinates().getY()+7, String.valueOf(city.getId()));
+            //cityID.setFont(new Font(22));
+            //CitiesId.getChildren().add(cityID);
         }
 
         this.root.getChildren().add(CitiesDrawing);
-        this.root.getChildren().add(CitiesId);
+        //this.root.getChildren().add(CitiesId);
     }
 
     private void drawRoads() {
